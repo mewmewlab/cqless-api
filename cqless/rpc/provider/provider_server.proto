@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package cqless.v1.provider;
-option go_package = "provider";
+option go_package = "./provider";
 
 import "google/protobuf/empty.proto";
 import "cqless/types/function.proto";
