@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package cqless.v1.function;
-option go_package = "github.com/mewmewlab/cqless-api/cqless/rpc/types;types";
+option go_package = "types";
 
 message FunctionResources {
   string memory = 1;
