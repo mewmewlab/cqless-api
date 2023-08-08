@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package cqless.v1.provider;
+option go_package = "github.com/mewmewlab/cqless-api/cqless/rpc/provider;provider";
+
+import "google/protobuf/empty.proto";
+import "cqless/types/function.proto";
+
+service ProviderServer {
+    rpc Create(google.protobuf.Empty) returns(google.protobuf.Empty);
+    rpc List(google.protobuf.Empty) returns(cqless.v1.function.Function);
+    rpc Get(google.protobuf.Empty) returns(google.protobuf.Empty);
+    rpc Resolve(google.protobuf.Empty) returns(google.protobuf.Empty);
+    rpc Delete(google.protobuf.Empty) returns(google.protobuf.Empty);
+}
