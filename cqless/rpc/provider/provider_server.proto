@@ -3,13 +3,59 @@ syntax = "proto3";
 package cqless.v1.provider;
 option go_package = "github.com/mewmewlab/cqless-api/cqless/rpc/provider;provider";
 
-import "google/protobuf/empty.proto";
 import "cqless/types/function.proto";
 
+message CreateReq {
+    cqless.v1.function.Function function = 1;
+}
+
+message CreateRes {
+    int64 code = 1;
+    string message = 2;
+}
+
+message ListReq {
+}
+
+message ListRes {
+    int64 code = 1;
+    string message = 2;
+    repeated cqless.v1.function.Function functions = 3;
+}
+
+message UpdateReq {
+    cqless.v1.function.Function function = 1;
+}
+
+message UpdateRes {
+    int64 code = 1;
+    string message = 2;
+    string functionName = 3; 
+}
+
+message ResolveReq {
+    string functionName = 1;
+}
+
+message ResolveRes {
+    int64 code = 1;
+    string message = 2;
+    string functionAddress = 3;
+}
+
+message DeleteReq {
+    string functionName = 1;
+}
+
+message DeleteRes {
+    int64 code = 1;
+    string message = 2;
+}
+
 service ProviderServer {
-    rpc Create(google.protobuf.Empty) returns(google.protobuf.Empty);
-    rpc List(google.protobuf.Empty) returns(cqless.v1.function.Function);
-    rpc Get(google.protobuf.Empty) returns(google.protobuf.Empty);
-    rpc Resolve(google.protobuf.Empty) returns(google.protobuf.Empty);
-    rpc Delete(google.protobuf.Empty) returns(google.protobuf.Empty);
+    rpc Create(CreateReq) returns(CreateRes);
+    rpc List(ListReq) returns(ListRes);
+    rpc Update(UpdateReq) returns(UpdateRes);
+    rpc Resolve(ResolveReq) returns(ResolveRes);
+    rpc Delete(DeleteReq) returns(DeleteRes);
 }
